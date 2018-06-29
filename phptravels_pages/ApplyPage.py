@@ -83,4 +83,6 @@ class ApplyPage(PageObject):
 
         """TO DO: Check how to populate root_uri"""
 
+        time.sleep(5)
+
         return InvoicePage(self.w, root_uri=None)
