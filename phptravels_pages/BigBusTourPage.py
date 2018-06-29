@@ -14,6 +14,11 @@ class BigBusTourPage(PageObject):
 
         return self.w.title
 
+    def make_screenshot(self):
+        """This function makes screenshot of the page"""
+
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_BigBusTourPage.png")
+
     def book_vacation(self):
         """This function adds one child within booking option and press submit"""
 

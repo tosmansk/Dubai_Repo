@@ -1,6 +1,6 @@
 from page_objects import PageObject, PageElement
 
-from phptravels_pages.ToursListing import ToursListing
+from phptravels_pages.ToursListingPage import ToursListingPage
 
 
 class AccountPage(PageObject):
@@ -16,8 +16,13 @@ class AccountPage(PageObject):
 
         return self.w.title
 
+    def make_screenshot(self):
+        """This function makes screenshot of the page"""
+
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_AccountPage.png")
+
     def click_tours(self):
         self.tours_element.click()
 
-        return ToursListing(self.w, root_uri='https://www.phptravels.net/tours')
+        return ToursListingPage(self.w, root_uri='https://www.phptravels.net/tours')
 

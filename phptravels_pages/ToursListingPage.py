@@ -4,7 +4,7 @@ from selenium.webdriver import ActionChains
 from phptravels_pages.BigBusTourPage import BigBusTourPage
 
 
-class ToursListing(PageObject):
+class ToursListingPage(PageObject):
     """This class resolves elements for Dubai search"""
 
     # to click for element to make a search
@@ -23,6 +23,11 @@ class ToursListing(PageObject):
         """This function returns page title for assertation"""
 
         return self.w.title
+
+    def make_screenshot(self):
+        """This function makes screenshot of the page"""
+
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_ToursListingPage.png")
 
     def send_dubai_data(self, place="Dubai", start_date="02/08/2018", quests="2", selection="Private"):
         """This function populates search data and finally returns new page object"""

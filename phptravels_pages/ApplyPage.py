@@ -1,11 +1,15 @@
+import time
+
 from page_objects import PageObject, PageElement
+
+from phptravels_pages.InvoicePage import InvoicePage
 
 
 class ApplyPage(PageObject):
 
     note_element = PageElement(css="textarea.form-control[name='additionalnotes']")
 
-    #personal data elements
+    # personal data elements
     guest1_name_element = PageElement(css="input.form-control[name='passport[1][name]']")
     guest1_passport_element = PageElement(css="input.form-control[name='passport[1][passportnumber]']")
     guest1_age = PageElement(css="input.form-control[name='passport[1][age]']")
@@ -16,6 +20,8 @@ class ApplyPage(PageObject):
     guest3_passport_element = PageElement(css="input.form-control[name='passport[3][passportnumber]']")
     guest3_age = PageElement(css="input.form-control[name='passport[3][age]']")
 
+    # confirmation button
+    confirm_button = PageElement(css="button.btn.btn-success.btn-lg.btn-block.completebook[type = 'submit']")
 
     """
     TO DO: Mozna sprawdzic dane na stonie:
@@ -23,6 +29,12 @@ class ApplyPage(PageObject):
     sprawdzoc czy vale jest value="Johny"
     <input class="form-control" placeholder="" name="" value="Smith" disabled="disabled" style="background-color: #DEDEDE !important" type="text">
     value=Smith    
+    
+    ORAZ VALUES na stronie:
+    <td class="text-right">USD $ 120</td>
+    <td class="text-right">USD $ 25</td>
+    <td class="text-right">USD $ 25</td>
+                                                
     """
 
     def return_title(self):
@@ -35,7 +47,12 @@ class ApplyPage(PageObject):
 
         self.note_element.send_keys(note)
 
-    def update_personal_data(self, name1='John', name2='Eva', name3='Lukas', passp1='AJ12345', passp2='AE3456', \
+    def make_screenshot(self):
+        """This function makes screenshot of the page"""
+
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_ApplyPage.png")
+
+    def update_personal_data(self, name1='John', name2='Eva', name3='Lukas', passp1='AJ12345', passp2='AE3456',
                              passp3='AL9876', age1='45', age2='46', age3='15'):
         """This function populates guest information part"""
 
@@ -49,7 +66,7 @@ class ApplyPage(PageObject):
         guest2_passport = passp2
         guest3_passport = passp3
         guest1_age = age1
-        guest2_age =age2
+        guest2_age = age2
         guest3_age = age3
 
         # Send personal_data
@@ -62,11 +79,8 @@ class ApplyPage(PageObject):
         self.guest3_name_element.send_keys(guest3_name)
         self.guest3_passport_element.send_keys(guest3_passport)
         self.guest3_age.send_keys(guest3_age)
+        self.confirm_button.click()
 
+        """TO DO: Check how to populate root_uri"""
 
-
-
-
-
-
-
+        return InvoicePage(self.w, root_uri=None)

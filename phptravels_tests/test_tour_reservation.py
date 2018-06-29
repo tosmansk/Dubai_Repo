@@ -4,7 +4,6 @@ from selenium import webdriver
 import unittest
 import logging
 from phptravels_pages.MainPage import MainPage
-from phptravels_pages.LoginPage import LoginPage
 
 
 class DubaiVacationTest(unittest.TestCase):
@@ -37,19 +36,26 @@ class DubaiVacationTest(unittest.TestCase):
         driver = self.driver
         url = self.url
         browser = self.browser
+        log = self.log
 
         # Login MainPage
         driver.get(url)
         mainpage = MainPage(driver, url)
 
         # Make browser and  url logged
-        self.log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the MainPage
+        mainpage.make_screenshot()
         
         # Make login
         loginpage = mainpage.make_loging()
 
         # Make browser and  url logged
-        self.log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the LoginPage
+        loginpage.make_screenshot()
 
         # Check title of login page
         self.assertEqual(loginpage.return_title(), 'Login')
@@ -58,7 +64,10 @@ class DubaiVacationTest(unittest.TestCase):
         accountpage = loginpage.make_login()
 
         # Make browser and  url logged
-        self.log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the AccountPage
+        accountpage.make_screenshot()
 
         # Check title of account page
         self.assertEqual(accountpage.return_title(), 'My Account')
@@ -67,31 +76,55 @@ class DubaiVacationTest(unittest.TestCase):
         tourspage = accountpage.click_tours()
 
         #  Make browser and  url logged
-        self.log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the ToursPage
+        tourspage.make_screenshot()
 
         # Check title of tours page
         self.assertEqual(tourspage.return_title(), 'Tours Listings')
 
         # Provide Dubai data
-        bigbuspage = tourspage.send_dubai_data("Dubai")
+        bigbuspage = tourspage.send_dubai_data('Dubai')
 
         #  Make browser and  url logged
-        self.log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the BigBusTourPage
+        bigbuspage.make_screenshot()
 
         # Check title of  Big Bus Tour of Dubai page
         self.assertEqual(bigbuspage.return_title(), 'Big Bus Tour of Dubai')
 
         # Make submit on the page
-        applypage=bigbuspage.book_vacation()
+        applypage = bigbuspage.book_vacation()
+
+        #  Make browser and  url logged
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the ApplyPage
+        applypage.make_screenshot()
+
+        # Check title of  Big Bus Tour of Dubai page
+        self.assertEqual(applypage.return_title(), 'Big Bus Tour of Dubai')
 
         # Make note updated on the page, can be overwritten, default use
         applypage.update_note()
 
         # Make personal data provisioning
-        applypage.update_personal_data()
+        invoicepage = applypage.update_personal_data()
 
+        #  Make browser and  url logged
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the ApplyPage
+        invoicepage.make_screenshot()
+
+        # Check title of  Big Bus Tour of Dubai page
+        #self.assertEqual(invoicepage.return_title(), 'Invoice')
+
+        invoicepage.press_pay_button()
 
 
 if __name__ == '__main__':
-
     unittest.main()

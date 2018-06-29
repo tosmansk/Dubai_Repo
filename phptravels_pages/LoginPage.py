@@ -23,6 +23,10 @@ class LoginPage(PageObject):
         """This function returns page title"""
 
         return self.w.title
+    def make_screenshot(self):
+        """This function makes screenshot of the page"""
+
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_LoginPage.png")
 
     def make_login(self):
         """This function makes login action with credential usage"""

@@ -14,6 +14,11 @@ class MainPage(PageObject):
     # Login element
     login_element = PageElement(css="ul > ul > li > ul > li > a[href='https://www.phptravels.net/login']")
 
+    def make_screenshot(self):
+        """This function makes screenshot of the page"""
+
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_MainPage.png")
+
     def return_phptravels_page(self):
         """This function returns its page object"""
 
