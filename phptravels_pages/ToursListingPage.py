@@ -1,4 +1,3 @@
-import time
 from page_objects import PageObject, PageElement
 from selenium.webdriver import ActionChains
 from phptravels_pages.BigBusTourPage import BigBusTourPage
@@ -29,13 +28,14 @@ class ToursListingPage(PageObject):
 
         self.w.get_screenshot_as_file("../phptravels_utils/screen_ToursListingPage{}.png".format(test_name))
 
-    def send_dubai_data(self, place="Dubai", start_date="02/08/2018", quests="2", selection="Private"):
+    def send_dubai_data(self, place="Dubai", start_date="02/08/2018"):
         """This function populates search data and finally returns new page object"""
 
+        """To DO: Add tour type: minor"""
+
+        # Put Dubai as vacation place
         self.vacation_place_element1.click()
         self.vacation_place_element2.send_keys(place)
-
-        """TO DO: wait for element, draft version"""
 
         # select tour Big Bus Tour of Dubai
         self.w.implicitly_wait(2)
@@ -46,9 +46,6 @@ class ToursListingPage(PageObject):
         # Set date arrival date
         self.date_element.clear()
         self.date_element.send_keys(start_date)
-
-        """TO DO: make tour_type Holiday and 
-        Element <button class="btn btn-action btn-lg btn-block loginbtn" type="submit"> is not clickable at point"""
 
         # press submit button
         self.submit_elemnt.click()
