@@ -6,8 +6,8 @@ import logging
 from phptravels_pages.MainPage import MainPage
 
 
-class DubaiVacationTest(unittest.TestCase):
-    """This class tests vacation reservation"""
+class DubaiTourReservationTest(unittest.TestCase):
+    """This class tests flight reservation"""
 
     def setUp(self):
         """This function makes test setup"""
@@ -26,10 +26,10 @@ class DubaiVacationTest(unittest.TestCase):
 
         # Set basic logging
         logging_format = '%(levelname)-15s %(asctime)s %(funcName)s %(message)s'
-        logging.basicConfig(filename='../phptravels_utils/dubai_test.log', level=logging.INFO, format=logging_format)
+        logging.basicConfig(filename='../phptravels_utils/dubai_tour_reservation.log', level=logging.DEBUG, format=logging_format)
         self.log = logging.getLogger(__name__)
 
-    def test_makevacationorganized(self):
+    def test_maketourreserved(self):
         """This function makes call PO pages and performs some action and checks on them"""
 
         # Set local veriables
@@ -46,16 +46,16 @@ class DubaiVacationTest(unittest.TestCase):
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
 
         # Make screenshot of the MainPage
-        mainpage.make_screenshot()
+        mainpage.make_screenshot(self._testMethodName)
         
         # Make login
-        loginpage = mainpage.make_loging()
+        loginpage = mainpage.click_loging()
 
         # Make browser and  url logged
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
 
         # Make screenshot of the LoginPage
-        loginpage.make_screenshot()
+        loginpage.make_screenshot(self._testMethodName)
 
         # Check title of login page
         self.assertEqual(loginpage.return_title(), 'Login')
@@ -67,7 +67,7 @@ class DubaiVacationTest(unittest.TestCase):
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
 
         # Make screenshot of the AccountPage
-        accountpage.make_screenshot()
+        accountpage.make_screenshot(self._testMethodName)
 
         # Check title of account page
         self.assertEqual(accountpage.return_title(), 'My Account')
@@ -79,7 +79,7 @@ class DubaiVacationTest(unittest.TestCase):
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
 
         # Make screenshot of the ToursPage
-        tourspage.make_screenshot()
+        tourspage.make_screenshot(self._testMethodName)
 
         # Check title of tours page
         self.assertEqual(tourspage.return_title(), 'Tours Listings')
@@ -91,7 +91,7 @@ class DubaiVacationTest(unittest.TestCase):
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
 
         # Make screenshot of the BigBusTourPage
-        bigbuspage.make_screenshot()
+        bigbuspage.make_screenshot(self._testMethodName)
 
         # Check title of  Big Bus Tour of Dubai page
         self.assertEqual(bigbuspage.return_title(), 'Big Bus Tour of Dubai')
@@ -103,7 +103,7 @@ class DubaiVacationTest(unittest.TestCase):
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
 
         # Make screenshot of the ApplyPage
-        applypage.make_screenshot()
+        applypage.make_screenshot(self._testMethodName)
 
         # Check title of  Big Bus Tour of Dubai page
         self.assertEqual(applypage.return_title(), 'Big Bus Tour of Dubai')
@@ -118,13 +118,19 @@ class DubaiVacationTest(unittest.TestCase):
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
 
         # Make screenshot of the ApplyPage
-        invoicepage.make_screenshot()
+        invoicepage.make_screenshot(self._testMethodName)
 
         # Check title of  Big Bus Tour of Dubai page
-        #self.assertEqual(invoicepage.return_title(), 'Invoice')
+        self.assertEqual(invoicepage.return_title(), 'Invoice')
 
+        # press payment button
         invoicepage.press_pay_button()
 
+    def tearDown(self):
+        self.driver.get_screenshot_as_file("../phptravels_utils/screen_{}.png".format(self._testMethodName))
+        self.driver.close()
 
 if __name__ == '__main__':
     unittest.main()
+
+"""TO DO: More chaecks on values """

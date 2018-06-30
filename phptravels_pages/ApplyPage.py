@@ -1,7 +1,6 @@
 import time
 
 from page_objects import PageObject, PageElement
-
 from phptravels_pages.InvoicePage import InvoicePage
 
 
@@ -25,9 +24,11 @@ class ApplyPage(PageObject):
 
     """
     TO DO: Mozna sprawdzic dane na stonie:
-    <input class="form-control" placeholder="" name="" value="Johny" disabled="disabled" style="background-color: #DEDEDE !important" type="text">
+    <input class="form-control" placeholder="" name="" value="Johny" disabled="disabled" style="background-color: 
+    #DEDEDE !important" type="text">
     sprawdzoc czy vale jest value="Johny"
-    <input class="form-control" placeholder="" name="" value="Smith" disabled="disabled" style="background-color: #DEDEDE !important" type="text">
+    <input class="form-control" placeholder="" name="" value="Smith" disabled="disabled" style="background-color: 
+    #DEDEDE !important" type="text">
     value=Smith    
     
     ORAZ VALUES na stronie:
@@ -47,10 +48,10 @@ class ApplyPage(PageObject):
 
         self.note_element.send_keys(note)
 
-    def make_screenshot(self):
+    def make_screenshot(self, test_name):
         """This function makes screenshot of the page"""
 
-        self.w.get_screenshot_as_file("../phptravels_utils/screen_ApplyPage.png")
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_ApplyPage{}.png".format(test_name))
 
     def update_personal_data(self, name1='John', name2='Eva', name3='Lukas', passp1='AJ12345', passp2='AE3456',
                              passp3='AL9876', age1='45', age2='46', age3='15'):
@@ -80,9 +81,6 @@ class ApplyPage(PageObject):
         self.guest3_passport_element.send_keys(guest3_passport)
         self.guest3_age.send_keys(guest3_age)
         self.confirm_button.click()
-
-        """TO DO: Check how to populate root_uri"""
-
         time.sleep(5)
 
         return InvoicePage(self.w, root_uri=None)

@@ -1,5 +1,3 @@
-import time
-
 from page_objects import PageObject, PageElement
 from phptravels_pages.AccountPage import AccountPage
 
@@ -23,10 +21,10 @@ class LoginPage(PageObject):
         """This function returns page title"""
 
         return self.w.title
-    def make_screenshot(self):
+    def make_screenshot(self, test_name):
         """This function makes screenshot of the page"""
 
-        self.w.get_screenshot_as_file("../phptravels_utils/screen_LoginPage.png")
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_LoginPage{}.png".format(test_name))
 
     def make_login(self):
         """This function makes login action with credential usage"""
@@ -42,7 +40,7 @@ class LoginPage(PageObject):
         email.send_keys(_email)
         passwd.clear()
         passwd.send_keys(_password)
-        time.sleep(1)
+        self.w.implicitly_wait(1)
         login_button.click()
 
         return AccountPage(self.w, root_uri='https://www.phptravels.net/account/')

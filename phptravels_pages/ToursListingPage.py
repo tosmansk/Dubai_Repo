@@ -24,10 +24,10 @@ class ToursListingPage(PageObject):
 
         return self.w.title
 
-    def make_screenshot(self):
+    def make_screenshot(self, test_name):
         """This function makes screenshot of the page"""
 
-        self.w.get_screenshot_as_file("../phptravels_utils/screen_ToursListingPage.png")
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_ToursListingPage{}.png".format(test_name))
 
     def send_dubai_data(self, place="Dubai", start_date="02/08/2018", quests="2", selection="Private"):
         """This function populates search data and finally returns new page object"""
@@ -38,7 +38,7 @@ class ToursListingPage(PageObject):
         """TO DO: wait for element, draft version"""
 
         # select tour Big Bus Tour of Dubai
-        time.sleep(2)
+        self.w.implicitly_wait(2)
         action = ActionChains(self.w)
         action.move_to_element(self.choose_tour_element)
         action.click()

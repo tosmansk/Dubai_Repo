@@ -16,10 +16,10 @@ class AccountPage(PageObject):
 
         return self.w.title
 
-    def make_screenshot(self):
+    def make_screenshot(self, test_name):
         """This function makes screenshot of the page"""
 
-        self.w.get_screenshot_as_file("../phptravels_utils/screen_AccountPage.png")
+        self.w.get_screenshot_as_file("../phptravels_utils/screen_AccountPage{}.png".format(test_name))
 
     def click_tours(self):
         self.tours_element.click()
