@@ -4743,3 +4743,84 @@ DEBUG           2018-06-30 16:12:46,393 _request POST http://127.0.0.1:50302/ses
 DEBUG           2018-06-30 16:12:46,444 _request Finished Request
 DEBUG           2018-06-30 16:12:46,452 _request POST http://127.0.0.1:50302/session/733373e6-0aa9-4922-bcfe-741e5847cedd/actions {"actions": [{"type": "pointer", "parameters": {"pointerType": "mouse"}, "id": "mouse", "actions": [{"type": "pointerMove", "duration": 250, "x": 0, "y": 0, "origin": {"element-6066-11e4-a52e-4f735466cecf": "78c9608d-9155-4293-bfed-75dce0e0a762"}}, {"type": "pointerDown", "duration": 0, "button": 0}, {"type": "pointerUp", "duration": 0, "button": 0}]}, {"type": "key", "id": "key", "actions": [{"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}]}], "sessionId": "733373e6-0aa9-4922-bcfe-741e5847cedd"}
 DEBUG           2018-06-30 16:12:47,314 _request Finished Request
+DEBUG           2018-06-30 23:35:10,919 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/url {"url": "https://www.phptravels.net/", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:18,278 _request Finished Request
+DEBUG           2018-06-30 23:35:18,278 _request GET http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/url {"sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:18,298 _request Finished Request
+INFO            2018-06-30 23:35:18,298 test_make_flight_reserved Firefox LOGGED URL: https://www.phptravels.net/
+DEBUG           2018-06-30 23:35:18,298 _request GET http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/screenshot {"sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:20,202 _request Finished Request
+DEBUG           2018-06-30 23:35:20,243 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "a[href='#flights']", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:20,302 _request Finished Request
+DEBUG           2018-06-30 23:35:20,302 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/884addca-4d4c-4393-973e-1d3218f2b430/click {"id": "884addca-4d4c-4393-973e-1d3218f2b430", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:21,041 _request Finished Request
+DEBUG           2018-06-30 23:35:21,041 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "xpath", "value": "/html/body/div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[9]/div[2]", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:21,182 _request Finished Request
+DEBUG           2018-06-30 23:35:21,182 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/04a23e0b-e40e-4084-9260-bc8e7e2d9d6f/click {"id": "04a23e0b-e40e-4084-9260-bc8e7e2d9d6f", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:21,717 _request Finished Request
+DEBUG           2018-06-30 23:35:21,719 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "div#s2id_location_from > a.select2-choice.select2-default", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:21,798 _request Finished Request
+DEBUG           2018-06-30 23:35:21,798 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/bf2dc597-7732-4f1d-81a5-4c59f8957a0a/click {"id": "bf2dc597-7732-4f1d-81a5-4c59f8957a0a", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:22,671 _request Finished Request
+DEBUG           2018-06-30 23:35:22,671 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "div.select2-drop-active > div.select2-search > input.select2-input.select2-focused", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:22,760 _request Finished Request
+DEBUG           2018-06-30 23:35:22,760 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/ce2f1000-100d-467f-9128-7e8f4ca260aa/value {"text": "Bydgoszcz", "value": ["B", "y", "d", "g", "o", "s", "z", "c", "z"], "id": "ce2f1000-100d-467f-9128-7e8f4ca260aa", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:22,975 _request Finished Request
+DEBUG           2018-06-30 23:35:22,975 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/timeouts {"implicit": 1000, "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:22,995 _request Finished Request
+DEBUG           2018-06-30 23:35:22,995 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "div.select2-result-label", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:24,097 _request Finished Request
+DEBUG           2018-06-30 23:35:24,097 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/05399666-bb00-4650-b7af-365a8412f567/click {"id": "05399666-bb00-4650-b7af-365a8412f567", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:25,352 _request Finished Request
+DEBUG           2018-06-30 23:35:25,352 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "div#s2id_location_to > a.select2-choice.select2-default", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:25,433 _request Finished Request
+DEBUG           2018-06-30 23:35:25,433 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/2e4941f4-1ddc-404e-8624-882a9ed7540a/click {"id": "2e4941f4-1ddc-404e-8624-882a9ed7540a", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:26,384 _request Finished Request
+DEBUG           2018-06-30 23:35:26,384 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "div#select2-drop > div.select2-search > input.select2-input[type='text']", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:26,465 _request Finished Request
+DEBUG           2018-06-30 23:35:26,465 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/46d0dcd4-ac52-4cf2-bac4-4b9a19b61a93/value {"text": "Dubai", "value": ["D", "u", "b", "a", "i"], "id": "46d0dcd4-ac52-4cf2-bac4-4b9a19b61a93", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:26,617 _request Finished Request
+DEBUG           2018-06-30 23:35:26,626 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/timeouts {"implicit": 1000, "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:26,636 _request Finished Request
+DEBUG           2018-06-30 23:35:26,636 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "div.select2-result-label", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:27,671 _request Finished Request
+DEBUG           2018-06-30 23:35:27,671 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/34ff4fc3-0768-415f-b9ca-809bbc1117e5/click {"id": "34ff4fc3-0768-415f-b9ca-809bbc1117e5", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:28,996 _request Finished Request
+DEBUG           2018-06-30 23:35:28,996 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "input.departureTime", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:29,117 _request Finished Request
+DEBUG           2018-06-30 23:35:29,117 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/c7425cbd-5566-41a3-a401-748d0f6c5f36/click {"id": "c7425cbd-5566-41a3-a401-748d0f6c5f36", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:30,461 _request Finished Request
+DEBUG           2018-06-30 23:35:30,461 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "input.departureTime", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:30,623 _request Finished Request
+DEBUG           2018-06-30 23:35:30,623 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/c7425cbd-5566-41a3-a401-748d0f6c5f36/value {"text": "2018-08-02", "value": ["2", "0", "1", "8", "-", "0", "8", "-", "0", "2"], "id": "c7425cbd-5566-41a3-a401-748d0f6c5f36", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:30,997 _request Finished Request
+DEBUG           2018-06-30 23:35:30,997 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "input.arrivalTime", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:31,099 _request Finished Request
+DEBUG           2018-06-30 23:35:31,099 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/8df9a8d2-1088-4b75-815a-c853e75cdafd/click {"id": "8df9a8d2-1088-4b75-815a-c853e75cdafd", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:31,696 _request Finished Request
+DEBUG           2018-06-30 23:35:31,696 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "input.arrivalTime", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:31,979 _request Finished Request
+DEBUG           2018-06-30 23:35:31,979 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/8df9a8d2-1088-4b75-815a-c853e75cdafd/value {"text": "2018-08-04", "value": ["2", "0", "1", "8", "-", "0", "8", "-", "0", "4"], "id": "8df9a8d2-1088-4b75-815a-c853e75cdafd", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:32,463 _request Finished Request
+DEBUG           2018-06-30 23:35:32,463 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "div.col-md-1.form-group.go-right.col-xs-12 > div.row", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:32,627 _request Finished Request
+DEBUG           2018-06-30 23:35:32,627 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/e1f9a70e-b6c8-46a6-ab69-3a90c00fe30c/click {"id": "e1f9a70e-b6c8-46a6-ab69-3a90c00fe30c", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:33,645 _request Finished Request
+DEBUG           2018-06-30 23:35:33,645 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "xpath", "value": "//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[7]/div/div/div[2]/section/div/div[1]/div[1]", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:33,797 _request Finished Request
+DEBUG           2018-06-30 23:35:33,797 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/actions {"actions": [{"type": "pointer", "parameters": {"pointerType": "mouse"}, "id": "mouse", "actions": [{"type": "pointerMove", "duration": 250, "x": 0, "y": 0, "origin": {"element-6066-11e4-a52e-4f735466cecf": "afa540c0-f0ec-442a-bb18-a6c398334b58"}}, {"type": "pointerDown", "duration": 0, "button": 0}, {"type": "pointerUp", "duration": 0, "button": 0}]}, {"type": "key", "id": "key", "actions": [{"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}]}], "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:34,656 _request Finished Request
+DEBUG           2018-06-30 23:35:34,656 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "css selector", "value": "select.travellercount.form-control[name='madult']", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:34,839 _request Finished Request
+DEBUG           2018-06-30 23:35:34,839 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/5f7aacae-566f-47e4-8de4-c4b5e1d25d72/value {"text": "3", "value": ["3"], "id": "5f7aacae-566f-47e4-8de4-c4b5e1d25d72", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:35,021 _request Finished Request
+DEBUG           2018-06-30 23:35:35,021 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "xpath", "value": "//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[7]/div/div/div[3]", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:35,190 _request Finished Request
+DEBUG           2018-06-30 23:35:35,190 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element/a72c4e8d-74ed-44f7-8dd5-4123dfce986b/click {"id": "a72c4e8d-74ed-44f7-8dd5-4123dfce986b", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:35,749 _request Finished Request
+DEBUG           2018-06-30 23:35:35,749 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/element {"using": "xpath", "value": "//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[6]/div", "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:35,818 _request Finished Request
+DEBUG           2018-06-30 23:35:35,818 _request POST http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/actions {"actions": [{"type": "pointer", "parameters": {"pointerType": "mouse"}, "id": "mouse", "actions": [{"type": "pointerMove", "duration": 250, "x": 0, "y": 0, "origin": {"element-6066-11e4-a52e-4f735466cecf": "c483a06c-1ce5-419c-baae-12b126b93311"}}, {"type": "pointerDown", "duration": 0, "button": 0}, {"type": "pointerUp", "duration": 0, "button": 0}]}, {"type": "key", "id": "key", "actions": [{"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}, {"type": "pause", "duration": 0}]}], "sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:36,762 _request Finished Request
+DEBUG           2018-06-30 23:35:36,762 _request GET http://127.0.0.1:55493/session/50334d24-1bb2-4530-bb34-55f2e0018446/screenshot {"sessionId": "50334d24-1bb2-4530-bb34-55f2e0018446"}
+DEBUG           2018-06-30 23:35:38,187 _request Finished Request

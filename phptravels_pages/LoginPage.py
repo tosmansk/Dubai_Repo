@@ -21,16 +21,17 @@ class LoginPage(PageObject):
         """This function returns page title"""
 
         return self.w.title
+
     def make_screenshot(self, test_name):
         """This function makes screenshot of the page"""
 
         self.w.get_screenshot_as_file("../phptravels_utils/screen_LoginPage{}.png".format(test_name))
 
-    def make_login(self):
+    def make_login(self, credentials):
         """This function makes login action with credential usage"""
 
-        _email = 'user@phptravels.com'
-        _password = 'demouser'
+        _email = credentials['Email']
+        _password = credentials['Password']
 
         email = self.email_element
         passwd = self.passwd_element
@@ -44,12 +45,3 @@ class LoginPage(PageObject):
         login_button.click()
 
         return AccountPage(self.w, root_uri='https://www.phptravels.net/account/')
-
-        """TO DO: Element <button class="btn btn-action btn-lg btn-block loginbtn" type="submit"> is not clickable at point"""
-
-
-
-
-
-
-

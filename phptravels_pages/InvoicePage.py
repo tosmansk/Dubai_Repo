@@ -1,6 +1,7 @@
 from page_objects import PageObject, PageElement
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
+
 
 class InvoicePage(PageObject):
 
@@ -19,15 +20,8 @@ class InvoicePage(PageObject):
     def press_pay_button(self):
         """This function presses PAY ON ARRIVAL"""
 
-        print(self.w.current_url)
         self.pay_button_element.click()
-
-        """TO DO: Make click on pop-up window"""
-
-
-        WebDriverWait(self.w, 3).until(EC.alert_is_present(),
-                                        'Timed out waiting for PA creation ' +
-                                        'confirmation popup to appear.')
-
+        WebDriverWait(self.w, 6).until(ec.alert_is_present(), 'Timed out waiting for PA creation confirmation '
+                                                              'popup to appear.')
         alert = self.w.switch_to.alert
         alert.accept()

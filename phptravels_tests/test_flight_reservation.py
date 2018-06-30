@@ -60,8 +60,12 @@ class DubaiFightReservationTest(unittest.TestCase):
 
         # Make screenshot of the MainPage
         mainpage.make_screenshot(self._testMethodName)
-
+        # Search the flight
         mainpage.select_flight(self.flight_data)
+
+    def tearDown(self):
+        self.driver.get_screenshot_as_file("../phptravels_utils/screen_{}.png".format(self._testMethodName))
+        #self.driver.close()
 
 if __name__ == '__main__':
     unittest.main()

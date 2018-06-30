@@ -1,21 +1,21 @@
-from page_objects import PageObject, PageElement
-from selenium import webdriver
+import requests
+from lxml import html
 
+class CredentialPage(object):
+    """This class retrieves credential data for login purpose"""
 
-class CredentialPage(PageObject):
-    """This class gets credentials from https://phptravels.com/demo.php"""
+    def retrive_credential_data(self, credential_url):
+        """This function make request to get credential data"""
 
-    credential_element = PageElement(css="html > body > section.grey-box > div.container > \
-    div.rowdiv.wow.fadeInUp.col-md-12.animated > div.resource-box > div.row > div.col-md- 9 > div.col-md-12 > \
-    div.row > div.col-md-6 > div.col-md-8 > div.row")
+        credentials = {}
+        url = credential_url
+        request_get = requests.get(url)
 
-    def obtain_credentials(self):
+        # Find credential data from request.content
+        tree = html.fromstring(request_get.content)
+        credential_data = tree.xpath('//section[2]/div/div/div[1]/div/div/div[2]/div[2]/div/div[3]/div[2]/div/text()')
+        # Add data to the dict
+        credentials['Email'] = credential_data[1].strip()
+        credentials['Password'] = credential_data[3].strip()
 
-        credential_string = self.credential_element.text()
-        print(credential_string)
-
-if __name__ == '__main__':
-    driver = webdriver.Firefox()
-    driver.get('https://phptravels.com/demo.php')
-    obj = CredentialPage(driver)
-    obj.obtain_credentials()
+        return credentials

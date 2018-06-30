@@ -3,6 +3,8 @@ import configparser
 from selenium import webdriver
 import unittest
 import logging
+
+from phptravels_pages.CredentialPage import CredentialPage
 from phptravels_pages.MainPage import MainPage
 
 
@@ -16,6 +18,7 @@ class DubaiTourReservationTest(unittest.TestCase):
         config = configparser.ConfigParser()
         config.read('../phptravels_utils/config.ini')
         self.url = config['Selenium']['url']
+        self.credential_url = config['Selenium']['credential_url']
         self.browser = config['Selenium']['browser']
 
         # setup webdriver:
@@ -26,7 +29,8 @@ class DubaiTourReservationTest(unittest.TestCase):
 
         # Set basic logging
         logging_format = '%(levelname)-15s %(asctime)s %(funcName)s %(message)s'
-        logging.basicConfig(filename='../phptravels_utils/dubai_tour_reservation.log', level=logging.DEBUG, format=logging_format)
+        logging.basicConfig(filename='../phptravels_utils/dubai_tour_reservation.log', level=logging.DEBUG,
+                            format=logging_format)
         self.log = logging.getLogger(__name__)
 
     def test_maketourreserved(self):
@@ -60,8 +64,12 @@ class DubaiTourReservationTest(unittest.TestCase):
         # Check title of login page
         self.assertEqual(loginpage.return_title(), 'Login')
 
+        # Obtain Login credential
+        credentialpage = CredentialPage()
+        credentials = credentialpage.retrive_credential_data(self.credential_url)
+
         # Make login action; accountpage returned
-        accountpage = loginpage.make_login()
+        accountpage = loginpage.make_login(credentials)
 
         # Make browser and  url logged
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
@@ -129,6 +137,7 @@ class DubaiTourReservationTest(unittest.TestCase):
     def tearDown(self):
         self.driver.get_screenshot_as_file("../phptravels_utils/screen_{}.png".format(self._testMethodName))
         self.driver.close()
+
 
 if __name__ == '__main__':
     unittest.main()

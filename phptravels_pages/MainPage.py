@@ -1,5 +1,3 @@
-import time
-
 from page_objects import PageObject, PageElement
 from selenium.webdriver import ActionChains
 
@@ -20,30 +18,39 @@ class MainPage(PageObject):
 
     # Flight page elements
     flights_button_element = PageElement(css="a[href='#flights']")
+
     RoundTrip_element = PageElement(xpath='/html/body/div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[9]/div[2]')
+
     flights_from_text_box_element = PageElement(css="div#s2id_location_from > a.select2-choice.select2-default")
+
     flight_from_text_input_element = PageElement(css="div.select2-drop-active > div.select2-search > "
                                                      "input.select2-input.select2-focused")
     flight_choose_element = PageElement(css="div.select2-result-label")
+
     flights_to_text_box_element = PageElement(css="div#s2id_location_to > a.select2-choice.select2-default")
+
     flight_to_text_input_element = PageElement(css="div#select2-drop > div.select2-search > "
                                                    "input.select2-input[type='text']")
     departure_date_element = PageElement(css="input.departureTime")
+
     return_date_element = PageElement(css="input.arrivalTime")
+
     total_passengers_element = PageElement(css="div.col-md-1.form-group.go-right.col-xs-12 > div.row")
+
     adult_passengers_element = PageElement(xpath="//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[7]/div/div"
-                                                  "/div[2]/section/div/div[1]/div[1]")
+                                                 "/div[2]/section/div/div[1]/div[1]")
     apassengers_amount_element = PageElement(css="select.travellercount.form-control[name='madult']")
+
     child_passengers_element = PageElement(xpath="//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[7]/div/div"
                                                  "/div[2]/section/div/div[2]/div[1]")
     cpassengers_amount_element = PageElement(css="select.travellercount.form-control[name='mchildren']")
+
     infant_passengers_element = PageElement(xpath="//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[7]/div/div"
                                                   "/div[2]/section/div/div[3]/div[1]")
     ipassengers_amount_element = PageElement(css="select.travellercount.form-control[name='minfant']")
 
     passengers_done_button_element = PageElement(xpath="//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[7]/div"
                                                        "/div/div[3]")
-
     search_button_element = PageElement(xpath="//div[4]/section/div[2]/div/div[2]/div/div[4]/form/div[6]/div")
 
     def make_screenshot(self, test_name):
@@ -122,7 +129,6 @@ class MainPage(PageObject):
         action.move_to_element(choose_passengers_element)
         action.click()
         action.perform()
-
 
     def click_loging(self):
         """This function makes logging"""
