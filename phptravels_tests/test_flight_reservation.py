@@ -1,8 +1,8 @@
-import configparser
 from selenium import webdriver
 import unittest
 import logging
-from phptravels_pages.MainPage import MainPage
+from phptravels_pages.main_page import MainPage
+from phptravels_tests.read_config_data import ReadConfigData
 
 
 class DubaiFightReservationTest(unittest.TestCase):
@@ -11,34 +11,27 @@ class DubaiFightReservationTest(unittest.TestCase):
     def setUp(self):
         """This function makes test setup"""
 
-        # obtain configuration data from config.ini
-        config = configparser.ConfigParser()
-        config.read('../phptravels_utils/config.ini')
-        self.url = config['Selenium']['url']
-        self.browser = config['Selenium']['browser']
+        # obtain configuration data
+        config = ReadConfigData()
 
-        # Obtain flight data from ini file
-        config.read('../phptravels_utils/flight_data.ini')
+        # config_ini['url'] config_ini['credential_url'] config_ini['browser']
+        self.config_ini = config.read_config_ini()
 
-        self.flight_data = {}
+        # personal_data.ini
+        self.personal_data_ini = config.read_personal_data_ini()
 
-        self.flight_data['from_airport'] = config['FlightData']['from_airport']
-        self.flight_data['to_airport'] = config['FlightData']['to_airport']
-        self.flight_data['start_date'] = config['FlightData']['flight_start_date']
-        self.flight_data['return_date'] = config['FlightData']['flight_return_date']
-        self.flight_data['apassengers'] = config['FlightData']['adult_passengers']
-        self.flight_data['cpassengers'] = config['FlightData']['child_passengers']
-        self.flight_data['ipassengers'] = config['FlightData']['infant_passengers']
+        # Obtain flight_data.ini file
+        self.flight_data_ini = config.read_flight_data_ini()
 
         # setup webdriver:
-        if self.browser == "Firefox":
+        if self.config_ini['browser'] == "Firefox":
             self.driver = webdriver.Firefox()
-        elif self.browser == "Chrome":
+        elif self.config_ini['browser'] == "Chrome":
             self.driver = webdriver.Chrome()
 
         # Set basic logging
         logging_format = '%(levelname)-15s %(asctime)s %(funcName)s %(message)s'
-        logging.basicConfig(filename='../phptravels_utils/flight_reservation.log', level=logging.DEBUG,
+        logging.basicConfig(filename='../phptravels_logs/flight_reservation.log', level=logging.DEBUG,
                             format=logging_format)
         self.log = logging.getLogger(__name__)
 
@@ -47,8 +40,8 @@ class DubaiFightReservationTest(unittest.TestCase):
 
         # Set local veriables
         driver = self.driver
-        url = self.url
-        browser = self.browser
+        url = self.config_ini['url']
+        browser = self.config_ini['browser']
         log = self.log
 
         # Login MainPage
@@ -60,12 +53,62 @@ class DubaiFightReservationTest(unittest.TestCase):
 
         # Make screenshot of the MainPage
         mainpage.make_screenshot(self._testMethodName)
+
+        # Check title of Main page
+        self.assertEqual(mainpage.return_title(), 'PHPTRAVELS | Travel Technology Partner')
+
         # Search the flight
-        mainpage.select_flight(self.flight_data)
+        flightslistpage = mainpage.select_flight(self.flight_data_ini)
+
+        # Make browser and  url logged
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the FlightsList page
+        flightslistpage.make_screenshot(self._testMethodName)
+
+        # Check title of Flights List page
+        self.assertEqual(flightslistpage.return_title(), 'Flights List')
+
+        # assert data FlightsList dict
+        flightslist_asser_data = flightslistpage.flights_list_assert_data()
+
+        # Select flight from list
+        flightapply = flightslistpage.select_flight()
+
+        # Make browser and  url logged
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the FlightApply
+        flightapply.make_screenshot(self._testMethodName)
+
+        # Check title of flightapply page
+        self.assertEqual(flightapply.return_title(), 'PHPTRAVELS | Travel Technology Partner')
+
+        # Assert data dict FlightApply
+        flightapply_assert_data = flightapply.flight_apply_assert_data()
+
+        # Provision personal details for booking
+        flightinvoice = flightapply.provision_personal_data(self.personal_data_ini)
+
+        # Make browser and  url logged
+        log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
+
+        # Make screenshot of the FlightApply
+        flightinvoice.make_screenshot(self._testMethodName)
+
+        # Check title of flightapply page
+        self.assertEqual(flightinvoice.return_title(), 'Invoice')
+
+        # Assert Data dict of FlightInvoice
+        flightinvoice.fight_invoice_asser_data()
+
+        # Apply payment
+        flightinvoice.pay_on_arrival()
 
     def tearDown(self):
-        self.driver.get_screenshot_as_file("../phptravels_utils/screen_{}.png".format(self._testMethodName))
-        #self.driver.close()
+        self.driver.get_screenshot_as_file("../phptravels_logs/screen_{}.png".format(self._testMethodName))
+        self.driver.close()
+
 
 if __name__ == '__main__':
     unittest.main()

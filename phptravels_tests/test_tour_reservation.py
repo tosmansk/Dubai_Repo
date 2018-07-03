@@ -1,11 +1,9 @@
-import configparser
-
 from selenium import webdriver
 import unittest
 import logging
-
-from phptravels_pages.CredentialPage import CredentialPage
-from phptravels_pages.MainPage import MainPage
+from phptravels_pages.credential_page import CredentialPage
+from phptravels_pages.main_page import MainPage
+from phptravels_tests.read_config_data import ReadConfigData
 
 
 class DubaiTourReservationTest(unittest.TestCase):
@@ -14,32 +12,34 @@ class DubaiTourReservationTest(unittest.TestCase):
     def setUp(self):
         """This function makes test setup"""
 
-        # obtain configuration data from config.ini
-        config = configparser.ConfigParser()
-        config.read('../phptravels_utils/config.ini')
-        self.url = config['Selenium']['url']
-        self.credential_url = config['Selenium']['credential_url']
-        self.browser = config['Selenium']['browser']
+        # obtain configuration data
+        config = ReadConfigData()
+
+        # config_ini['url'] config_ini['credential_url'] config_ini['browser']
+        self.config_ini = config.read_config_ini()
+
+        # personal_data.ini
+        self.personal_data_ini = config.read_personal_data_ini()
 
         # setup webdriver:
-        if self.browser == "Firefox":
+        if self.config_ini['browser'] == "Firefox":
             self.driver = webdriver.Firefox()
-        elif self.browser == "Chrome":
+        elif self.config_ini['browser'] == "Chrome":
             self.driver = webdriver.Chrome()
 
         # Set basic logging
         logging_format = '%(levelname)-15s %(asctime)s %(funcName)s %(message)s'
-        logging.basicConfig(filename='../phptravels_utils/dubai_tour_reservation.log', level=logging.DEBUG,
+        logging.basicConfig(filename='../phptravels_logs/dubai_tour_reservation.log', level=logging.DEBUG,
                             format=logging_format)
         self.log = logging.getLogger(__name__)
 
-    def test_maketourreserved(self):
+    def test_make_tour_reserved(self):
         """This function makes call PO pages and performs some action and checks on them"""
 
         # Set local veriables
         driver = self.driver
-        url = self.url
-        browser = self.browser
+        url = self.config_ini['url']
+        browser = self.config_ini['browser']
         log = self.log
 
         # Login MainPage
@@ -51,6 +51,9 @@ class DubaiTourReservationTest(unittest.TestCase):
 
         # Make screenshot of the MainPage
         mainpage.make_screenshot(self._testMethodName)
+
+        # Check title of login page
+        self.assertEqual(mainpage.return_title(), 'PHPTRAVELS | Travel Technology Partner')
         
         # Make login
         loginpage = mainpage.click_loging()
@@ -66,7 +69,7 @@ class DubaiTourReservationTest(unittest.TestCase):
 
         # Obtain Login credential
         credentialpage = CredentialPage()
-        credentials = credentialpage.retrive_credential_data(self.credential_url)
+        credentials = credentialpage.retrive_credential_data(self.config_ini['credential_url'])
 
         # Make login action; accountpage returned
         accountpage = loginpage.make_login(credentials)
@@ -119,8 +122,14 @@ class DubaiTourReservationTest(unittest.TestCase):
         # Make note updated on the page, can be overwritten, default use
         applypage.update_note()
 
+        # Set Extras
+        applypage.update_extras()
+
+        # Check total prise for this order
+        self.assertEqual(applypage.return_total_amount(), '632.5')
+
         # Make personal data provisioning
-        invoicepage = applypage.update_personal_data()
+        invoicepage = applypage.update_personal_data(self.personal_data_ini)
 
         #  Make browser and  url logged
         log.info('{0} LOGGED URL: {1}'.format(browser, driver.current_url))
@@ -135,11 +144,8 @@ class DubaiTourReservationTest(unittest.TestCase):
         invoicepage.press_pay_button()
 
     def tearDown(self):
-        self.driver.get_screenshot_as_file("../phptravels_utils/screen_{}.png".format(self._testMethodName))
+        self.driver.get_screenshot_as_file("../phptravels_logs/screen_{}.png".format(self._testMethodName))
         self.driver.close()
-
 
 if __name__ == '__main__':
     unittest.main()
-
-"""TO DO: More chaecks on values """
